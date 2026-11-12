@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jose Felix Perez | Miami Muralist and Painter</title>
+  <meta name="description" content="Jose Felix Perez paints murals and canvases in Miami. Public walls, corporate interiors and studio work.">
+
+  <!-- Fonts: Fraunces (serif headings) and Inter (body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER (same on every page) ============ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html">Jose Felix Perez</a>
+      <ul class="nav">
+        <li><a href="murals.html">Murals</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" data-contact="Contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ============ HERO ============ -->
+  <div class="wrap hero">
+    <div>
+      <h1>Painting the <em>overgrowth</em> of South Florida, at any scale.</h1>
+      <p>Murals for buildings and businesses. Paintings for the walls inside them. Based in Miami.</p>
+    </div>
+    <figure>
+      <img src="images/murals/forma-1.jpg" alt="Sea grape mural on a terrace wall at Forma, Miami">
+      <figcaption class="caption">Forma, 2024</figcaption>
+    </figure>
+  </div>
+
+
+  <!-- ============ MURALS: 4 featured tiles ============
+       Filled in by main.js from data.js (murals with featured: true). -->
+  <section id="murals">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Murals</h2>
+        <a href="murals.html">All murals &rarr;</a>
+      </div>
+      <div class="mural-grid" id="featured-murals"></div>
+    </div>
+  </section>
+
+
+  <!-- ============ FILM BANNER ============
+       A short strip that opens the film in a pop-up (the modal at the
+       bottom of this page). The video only loads when someone clicks.
+       To use a different video, change data-video to its YouTube id. -->
+  <div class="wrap">
+    <button class="film-banner" type="button" data-video="wR2n07rloZU" aria-haspopup="dialog">
+      <img src="images/murals/5-stories-tall-film.jpg" alt="" loading="lazy">
+      <span class="play" aria-hidden="true">&#9654;</span>
+      <span class="film-text">
+        <span class="label">Watch the film</span>
+        <strong>5 Stories Tall</strong>
+        <span class="film-meta">How a 60-foot mural went up five floors of Greenberg Traurig. Wet Heat Project, 2011.</span>
+      </span>
+    </button>
+  </div>
+
+
+  <!-- ============ CLIENTS: logo cards ============
+       One card per client. Add a client by copying a <li>.
+       If the cards don't fit on one line, main.js makes them slide slowly.
+       Logos are shown in grayscale (see .client-card in style.css). -->
+  <div class="clients">
+    <div class="wrap">
+      <p class="label">Walls for</p>
+      <div class="client-slider" id="client-slider">
+        <ul class="client-track">
+          <li class="client-card"><img src="images/clients/greenberg-traurig.svg" alt="Greenberg Traurig"></li>
+          <li class="client-card"><img src="images/clients/sony-music.svg" alt="Sony Music Latin"></li>
+          <li class="client-card"><img src="images/clients/calle-collective.svg" alt="Calle Collective"></li>
+          <!-- TODO: replace this text with the Hollywood Chamber logo:
+               <img src="images/clients/hollywood-chamber.png" alt="Greater Hollywood Chamber of Commerce"> -->
+          <li class="client-card"><span class="client-name">Greater Hollywood Chamber of Commerce</span></li>
+          <li class="client-card"><img src="images/clients/murals-in-the-market.png" alt="Murals in the Market, 1xRUN"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <img src="images/about/portrait.jpg" alt="Jose Felix Perez" loading="lazy">
+      <div>
+        <blockquote>
+          "The Charles Burchfield of the swamp."
+          <cite>Swampspace, 2018</cite>
+        </blockquote>
+
+        <p>
+          Jose Felix Perez is a Miami muralist and painter. He started on walls
+          with the graffiti crew Guerilla Tactics, earned his BFA at New World
+          School of the Arts in 2010, and that same year painted a five-story,
+          60-foot mural for Greenberg Traurig. His walls run from Wynwood to
+          Detroit. His canvases stay closer to home, in the light and overgrowth
+          of South Florida.
+        </p>
+        <p>
+          He has painted with Michael Vasquez in Wynwood and at Detroit's Murals
+          in the Market, and he has run production on public art projects by
+          Assume Vivid Astro Focus and Boa Mistura in Miami Beach. His 2018 solo
+          show, <em>The Magic Hour</em> at Swampspace, was reviewed by Hyperallergic.
+        </p>
+
+        <a class="button" href="#contact" data-contact="Commission a mural">Commission a mural</a>
+        <a class="button" href="#contact" data-contact="Gallery inquiry">Gallery inquiries</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ MEDIA: press that names Jose ============
+       Filled in by main.js from the PRESS list in data.js. -->
+  <section id="media">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Media</h2>
+      </div>
+      <ul class="press-list" id="press-list"></ul>
+    </div>
+  </section>
+
+
+  <!-- ============ STUDIO: paintings on canvas ============
+       Filled in by main.js from the STUDIO list in data.js (in that order). -->
+  <section id="studio">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Studio</h2>
+        <div class="section-links">
+          <a href="studio.html">All studio work &rarr;</a>
+          <a href="#contact" data-contact="Gallery inquiry">Gallery inquiries</a>
+        </div>
+      </div>
+      <div class="studio-grid" id="studio-grid"></div>
+    </div>
+  </section>
+
+
+  <!-- ============ FOOTER (same on every page) ============
+       Filled in by main.js from CONTACT in data.js. -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap" id="footer-contact"></div>
+  </footer>
+
+  <!-- ============ FILM MODAL (pop-up video player) ============
+       Hidden until the film banner is clicked. main.js puts the YouTube
+       player inside .video when it opens, and removes it on close so the
+       video stops. Closes with the X button, the Esc key, or a click outside. -->
+  <dialog class="film-modal" id="film-modal" aria-label="5 Stories Tall, film">
+    <button class="modal-close" type="button" aria-label="Close video">&times;</button>
+    <div class="video" id="film-player"></div>
+  </dialog>
+
+  <!-- Content first, then the code that builds the page from it -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

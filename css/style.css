@@ -1,0 +1,562 @@
+/* ==========================================================================
+   josefelixperez.com: main stylesheet
+   One file for the whole site. Sections are in page order.
+
+   To change the look site-wide, edit the variables in :root below.
+   ========================================================================== */
+
+
+/* ---------- 1. Design tokens (colors, fonts, spacing) ---------- */
+
+:root {
+  /* Colors */
+  --paper: #fafaf7;        /* page background: warm off-white */
+  --paper-dark: #efeee8;   /* tinted bands (About section) */
+  --ink: #1c1c1a;          /* main text */
+  --ink-soft: #5c5c58;     /* secondary text */
+  --ink-faint: #8a8a85;    /* captions, labels */
+  --line: #dddcd5;         /* hairline borders */
+  --accent: #2f6b4f;       /* sea-grape green, used sparingly */
+
+  /* Fonts (loaded from Google Fonts in each HTML <head>) */
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Inter", Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --page-max: 1320px;      /* widest the content gets */
+  --gutter: 72px;          /* left/right page padding on desktop */
+}
+
+
+/* ---------- 2. Base ---------- */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+/* Centers content and adds side padding. Used on most sections. */
+.wrap {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Small uppercase label, e.g. "WALLS FOR" */
+.label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Big serif section headings: "Murals", "Media", "Studio" */
+.section-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 1.1;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+}
+
+.section-head a { font-size: 15px; color: var(--ink-soft); }
+
+/* Two links side by side next to a section title */
+.section-links { display: flex; gap: 28px; align-items: baseline; flex-wrap: wrap; }
+
+section { padding: 88px 0; border-top: 1px solid var(--line); }
+
+
+/* ---------- 3. Header / navigation ---------- */
+
+.site-header .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav { display: flex; gap: 40px; list-style: none; font-size: 15px; }
+.nav a { text-decoration: none; color: var(--ink-soft); }
+.nav a:hover,
+.nav a.active { color: var(--ink); border-bottom: 1px solid var(--ink); }
+
+
+/* ---------- 4. Homepage hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;   /* text | image */
+  gap: 64px;
+  align-items: end;
+  padding-top: 24px;
+  padding-bottom: 96px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 72px;
+  line-height: 1.04;
+}
+
+.hero h1 em { color: var(--accent); }
+
+.hero p { color: var(--ink-soft); font-size: 18px; margin-top: 28px; max-width: 440px; }
+
+.hero img { width: 100%; height: 700px; object-fit: cover; }
+
+.caption { font-size: 13px; color: var(--ink-faint); margin-top: 10px; }
+
+
+/* ---------- 5. Mural tiles (homepage: 4 across, murals page: grid) ---------- */
+
+.mural-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* change 4 to show more/less per row */
+  gap: 24px;
+}
+
+.mural-tile { text-decoration: none; display: block; }
+
+.mural-tile .thumb {
+  aspect-ratio: 4 / 5;          /* every tile the same shape */
+  overflow: hidden;
+  background: var(--paper-dark);
+}
+
+.mural-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.mural-tile:hover img { transform: scale(1.03); }
+
+.mural-tile h3 { font-size: 16px; font-weight: 500; margin-top: 12px; }
+.mural-tile p { font-size: 13px; color: var(--ink-faint); }
+
+/* Shown when a mural has no photos yet */
+.thumb.placeholder,
+.photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+  font-size: 14px;
+  border: 1px dashed var(--line);
+}
+
+
+/* ---------- 6. Clients: logo cards + slider ---------- */
+
+.clients { padding: 56px 0 72px; }
+.clients .label { margin-bottom: 20px; }
+
+/* The window the cards sit in. Anything wider is hidden (and slides). */
+.client-slider { overflow: hidden; }
+
+/* The row of cards */
+.client-track {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  width: max-content;      /* as wide as the cards need, so we can measure overflow */
+}
+
+/* One card: soft, almost square, logo centered */
+.client-card {
+  flex: 0 0 auto;
+  width: 190px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+/* Logos are grayscale and a little faded so no brand shouts. Full color on hover. */
+.client-card img {
+  max-width: 100%;
+  max-height: 64px;
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.client-card:hover img { filter: none; opacity: 1; }
+
+/* Text stand-in for a client without a logo file yet */
+.client-name {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* Sliding: main.js adds .is-sliding when the cards don't fit, and duplicates
+   them once so the loop is seamless. The track moves left by exactly half its
+   width (one full set of cards), then starts over. Slower = bigger seconds. */
+.client-slider.is-sliding .client-track {
+  padding-right: 20px;     /* same as the gap, so both halves are exactly equal */
+  animation: client-slide 40s linear infinite;
+}
+
+.client-slider.is-sliding:hover .client-track { animation-play-state: paused; }
+
+@keyframes client-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* People who turn off motion in their system settings get a still row they can swipe */
+@media (prefers-reduced-motion: reduce) {
+  .client-slider { overflow-x: auto; }
+  .client-slider.is-sliding .client-track { animation: none; }
+}
+
+
+/* ---------- 6b. Film banner + pop-up player ---------- */
+
+/* A short clickable strip: thumbnail on the left, text on the right */
+.film-banner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0;
+  background: var(--paper-dark);
+  border: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.film-banner img { width: 100%; height: 150px; object-fit: cover; }
+
+/* Round play button over the thumbnail */
+.film-banner .play {
+  position: absolute;
+  left: 140px;              /* center of the 280px thumbnail */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(250, 250, 247, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;        /* optically centers the triangle */
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.film-banner:hover .play { transform: translate(-50%, -50%) scale(1.08); }
+
+.film-text { padding: 20px 32px 20px 0; }
+.film-text strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.2; margin: 4px 0; }
+.film-meta { color: var(--ink-soft); font-size: 15px; }
+
+/* The pop-up itself (<dialog>) */
+.film-modal {
+  width: min(960px, 92vw);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: #000;
+  overflow: visible;        /* lets the close button sit outside the video */
+}
+
+.film-modal::backdrop { background: rgba(20, 20, 18, 0.82); }
+
+.film-modal .video { margin: 0; }
+
+.modal-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+
+/* ---------- 7. Media (press list) ---------- */
+
+.press-list { list-style: none; }
+
+.press-item {
+  display: grid;
+  grid-template-columns: 180px 1fr 120px;  /* outlet | headline | date */
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.press-item .outlet { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); }
+.press-item a { font-family: var(--serif); font-size: 21px; text-decoration: none; }
+.press-item a:hover { color: var(--accent); }
+.press-item .quote { display: block; font-size: 15px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
+.press-item .date { font-size: 14px; color: var(--ink-faint); text-align: right; }
+
+
+/* ---------- 8. Studio work ---------- */
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.studio-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+/* Each tile is a link to the painting's own page */
+.painting-tile { display: block; text-decoration: none; }
+.painting-tile img { transition: opacity 0.2s; }
+.painting-tile:hover img { opacity: 0.85; }
+.painting-tile:hover h3 { color: var(--accent); }
+.studio-grid h3 { font-size: 15px; font-weight: 500; margin-top: 10px; }
+.studio-grid p { font-size: 13px; color: var(--ink-faint); }
+
+
+/* ---------- 9. About band ---------- */
+
+.about { background: var(--paper-dark); border-top: none; }
+
+.about .wrap {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about img { width: 100%; height: 500px; object-fit: cover; object-position: top center; }  /* if it crops, keep the head */
+
+.about blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.about cite { display: block; font-size: 14px; font-style: normal; color: var(--ink-faint); margin-top: 10px; }
+.about p { font-size: 17px; color: var(--ink-soft); margin-top: 28px; max-width: 640px; }
+
+
+/* ---------- 10. Buttons ---------- */
+
+.button {
+  display: inline-block;
+  margin: 32px 12px 0 0;
+  padding: 14px 26px;
+  border: 1px solid var(--ink);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.button:hover { background: var(--ink); color: var(--paper); }
+
+
+/* ---------- 11. Mural detail page (70 / 30 columns) ---------- */
+
+.mural-page {
+  display: grid;
+  grid-template-columns: 7fr 3fr;   /* 70% photos | 30% text */
+  gap: 56px;
+  align-items: start;
+  padding-bottom: 96px;
+}
+
+/* Left column: photos stacked, full column width */
+.mural-photos { display: flex; flex-direction: column; gap: 20px; }
+.mural-photos img { width: 100%; }
+.photo-placeholder { aspect-ratio: 4 / 3; }
+
+/* Right column stays in view while the photos scroll */
+.mural-info { position: sticky; top: 32px; }
+
+.mural-info h1 { font-family: var(--serif); font-weight: 300; font-size: 40px; line-height: 1.1; }
+
+.mural-info .summary { color: var(--ink-soft); margin-top: 16px; }
+
+/* Stats list: label on the left, value on the right */
+.stats { margin-top: 28px; border-top: 1px solid var(--line); }
+.stats div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.stats dt { color: var(--ink-faint); }
+.stats dd { text-align: right; }
+
+.mural-media { margin-top: 36px; }
+.mural-media h2 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; margin-bottom: 8px; }
+.mural-media a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-family: var(--serif); font-size: 17px; line-height: 1.35; }
+.mural-media a:hover { color: var(--accent); }
+.mural-media small { display: block; font-family: var(--sans); font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+
+/* Video embeds keep a 16:9 shape */
+.video { position: relative; aspect-ratio: 16 / 9; margin-top: 12px; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.back-link { display: inline-block; margin-bottom: 24px; font-size: 14px; color: var(--ink-soft); text-decoration: none; }
+
+
+/* ---------- 11a. Painting detail page (same 70 / 30 layout) ---------- */
+
+/* The whole painting, never cropped. Tall paintings stop at screen height. */
+.painting-photo img {
+  width: auto;
+  max-width: 100%;
+  max-height: 88vh;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* Previous / Next links under the details */
+.painting-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.painting-nav a { color: var(--ink-soft); text-decoration: none; }
+.painting-nav a:hover { color: var(--accent); }
+.painting-nav a:last-child { text-align: right; }
+
+
+/* ---------- 11b. Contact pop-up ---------- */
+
+/* Built by main.js. Opens from any link with data-contact. */
+.contact-modal {
+  width: min(520px, 92vw);
+  margin: auto;
+  padding: 48px 44px 40px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.contact-modal::backdrop { background: rgba(20, 20, 18, 0.6); }
+
+/* The close X sits inside this pop-up (the film pop-up's sits outside) */
+.contact-modal .modal-close { top: 14px; right: 18px; color: var(--ink-soft); }
+
+.contact-modal h2 { font-family: var(--serif); font-weight: 300; font-size: 40px; line-height: 1.1; margin-top: 6px; }
+.contact-note { color: var(--ink-soft); margin-top: 12px; }
+
+/* The email address, big and obvious */
+.contact-email {
+  display: block;
+  margin-top: 24px;
+  font-family: var(--serif);
+  font-size: 24px;
+  text-decoration: none;
+  word-break: break-all;      /* long addresses wrap on phones */
+}
+
+.contact-email:hover { color: var(--accent); }
+
+.contact-actions .button { margin-top: 20px; background: none; font: inherit; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: inherit; cursor: pointer; }
+.contact-actions .button:first-child { background: var(--ink); color: var(--paper); }
+.contact-meta { margin-top: 28px; font-size: 14px; color: var(--ink-faint); }
+
+
+/* Focus ring only for keyboard users, not when a pop-up opens with a click */
+.modal-close:focus:not(:focus-visible) { outline: none; }
+
+
+/* ---------- 12. Footer ---------- */
+
+.site-footer { border-top: 1px solid var(--line); padding: 48px 0; font-size: 14px; color: var(--ink-faint); }
+.site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+
+
+/* ---------- 13. Smaller screens ---------- */
+
+/* Tablets: 2 tiles per row, hero stacks */
+@media (max-width: 1000px) {
+  :root { --gutter: 32px; }
+  .hero, .about .wrap, .mural-page { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 52px; }
+  .hero img { height: 480px; }
+  .mural-grid, .studio-grid { grid-template-columns: repeat(2, 1fr); }
+  .film-banner { grid-template-columns: 220px 1fr; }
+  .film-banner .play { left: 110px; }
+  .mural-info { position: static; order: -1; }  /* on small screens, title + stats come before the photos */
+
+  /* Portrait on iPads: keep its own tall shape instead of a wide crop */
+  .about img { height: auto; aspect-ratio: 3 / 4; max-width: 440px; }
+}
+
+/* Phones: 1 column, smaller type, nav wraps */
+@media (max-width: 600px) {
+  :root { --gutter: 16px; }
+  .site-header .wrap { flex-direction: column; gap: 12px; }
+  .nav { gap: 20px; flex-wrap: wrap; }
+  .hero h1 { font-size: 40px; }
+  .section-title { font-size: 36px; }
+  .mural-grid, .studio-grid { grid-template-columns: 1fr; }
+  .studio-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }  /* paintings stay 2-up on phones */
+  .press-item { grid-template-columns: 1fr; gap: 4px; }
+  .press-item a { font-size: 19px; }
+
+  /* Film banner stacks: thumbnail on top, text below */
+  .film-banner { grid-template-columns: 1fr; gap: 0; margin-bottom: 8px; }
+  .film-banner img { height: 160px; }
+  .film-banner .play { left: 50%; top: 80px; }
+  .film-text { padding: 18px 20px 20px; }
+  .film-text strong { font-size: 24px; }
+
+  .client-card { width: 150px; height: 120px; padding: 22px; }
+  .about blockquote { font-size: 30px; }
+  .contact-modal { padding: 40px 24px 28px; }
+  .contact-modal h2 { font-size: 32px; }
+  .contact-email { font-size: 20px; }
+  .section-head { flex-wrap: wrap; gap: 8px; }
+  .press-item .date { text-align: left; }
+  .about img { max-width: 100%; }
+}

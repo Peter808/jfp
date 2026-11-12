@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The tab title is replaced with the painting's name by main.js -->
+  <title>Painting | Jose Felix Perez</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER (same on every page) ============ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html">Jose Felix Perez</a>
+      <ul class="nav">
+        <li><a href="murals.html">Murals</a></li>
+        <li><a href="index.html#media">Media</a></li>
+        <li><a class="active" href="studio.html">Studio</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="#contact" data-contact="Contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ============ ONE PAINTING ============
+       This single file serves every painting. The address picks which one:
+         painting.html?id=gust
+       The id is the image's file name (images/studio/gust.jpg).
+       main.js finds it in the STUDIO list in data.js and fills this container:
+         left 70%  = the whole painting, uncropped
+         right 30% = title, details, an Inquire button, Previous / Next -->
+  <main class="wrap mural-page" id="painting-page"></main>
+
+
+  <!-- ============ FOOTER (same on every page) ============
+       Filled in by main.js from CONTACT in data.js. -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap" id="footer-contact"></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
