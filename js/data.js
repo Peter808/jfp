@@ -157,8 +157,8 @@ const MURALS = [
     size: "18 ft x 45 ft",
     role: "Exterior mural, with Michael Vasquez",
     featured: false,
-    photos: [],                      // TODO: photos
-    credit: "",
+    photos: ["images/murals/d12-1.jpg"],   // Jose's photo (sent 2026-11-12)
+    credit: "Photo: Jose Felix Perez",
     summary: "A tribute to the Detroit rap group D12 and Eminem, painted with Michael Vasquez for the Murals in the Market festival, based on a photo by Jeremy Deputat.",
     media: [
       { outlet: "Murals in the Market", title: "Artist profile: Jose Felix Perez", date: "2017", url: "https://www.muralsinthemarket.com/jose-felix-perez" },
